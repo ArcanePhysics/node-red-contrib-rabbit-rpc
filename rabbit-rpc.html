@@ -1,0 +1,90 @@
+<script type="text/javascript">
+    RED.nodes.registerType('rabbit-rpc-req',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            queueName: {value:''},
+            host: {value:''},
+            login: {value:""},
+            pass: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"rabbit-rpc-req";
+        }
+    });
+    RED.nodes.registerType('rabbit-rpc-server',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            queueName: {value:''},
+            host: {value:''},
+            login: {value:""},
+            pass: {value:""}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"rabbit-rpc-server";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="rabbit-rpc-req">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-host"><i class="fa fa-tag"></i> Host</label>
+        <input type="text" id="node-input-host" placeholder="localhost">
+    </div>
+    <div class="form-row">
+        <label for="node-input-queueName"><i class="fa fa-tag"></i> Queue</label>
+        <input type="text" id="node-input-queueName" placeholder="queue">
+    </div>
+    <div class="form-row">
+        <label for="node-input-login"><i class="fa fa-tag"></i> Login</label>
+        <input type="text" id="node-input-login" placeholder="login">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pass"><i class="fa fa-tag"></i> Pass</label>
+        <input type="text" id="node-input-pass" placeholder="pass">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="rabbit-rpc-req">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>
+
+<script type="text/html" data-template-name="rabbit-rpc-server">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-host"><i class="fa fa-tag"></i> Host</label>
+        <input type="text" id="node-input-host" placeholder="localhost">
+    </div>
+    <div class="form-row">
+        <label for="node-input-queueName"><i class="fa fa-tag"></i> Queue</label>
+        <input type="text" id="node-input-queueName" placeholder="queue">
+    </div>
+    <div class="form-row">
+        <label for="node-input-login"><i class="fa fa-tag"></i> Login</label>
+        <input type="text" id="node-input-login" placeholder="login">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pass"><i class="fa fa-tag"></i> Pass</label>
+        <input type="text" id="node-input-pass" placeholder="pass">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="rabbit-rpc-server">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>

@@ -1,0 +1,33 @@
+{
+  "name": "node-red-contrib-rabbit-rpc",
+  "version": "0.0.1",
+  "description": "mqpt nodes to send and receive messages from rabbit with rpc functionality",
+  "main": "rabbit-rpc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArcanePhysics/node-red-contrib-rabbit-rpc.git"
+  },
+  "keywords": [
+    "mqpt",
+    "rabbit",
+    "rpc",
+    "node-red"
+  ],
+  "author": "ArcanePhysics",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ArcanePhysics/node-red-contrib-rabbit-rpc/issues"
+  },
+  "homepage": "https://github.com/ArcanePhysics/node-red-contrib-rabbit-rpc#readme",
+  "node-red": {
+    "nodes": {
+      "rabbit-request": "rabbit-rpc.js"
+    }
+  },
+  "dependencies": {
+    "amqplib": "^0.8.0"
+  }
+}
