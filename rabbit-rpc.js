@@ -157,10 +157,12 @@ function startClient(node) {
             var correlationId = msg.correlationId || generateUuid();
             var num = msg.payload;
             var queueName = node.queueName;
+            var replyQueue;
             if (!msg.replyTo) {
                 var timer = setTimeout(function () {
                     if (channel) {
                         try {
+                            channel.deleteQueue(replyQueue, {ifEmpty:false});
                             channel.close();
                         } catch (e) {
                             node.error(e);
@@ -177,10 +179,10 @@ function startClient(node) {
                         node.error(error2);
                         return;
                     }
+                    replyQueue = q.queue;
                     channel.consume(q.queue, function reply(rabbitMsg) {
                         console.log(' [.] Got %s', rabbitMsg.content.toString());
                         console.log(node.myId);
-                        
                         msg.payload = rabbitMsg.content.toString(),
                         msg.replyTo = rabbitMsg.properties.replyTo,
                         msg.correlationId = rabbitMsg.properties.correlationId,
@@ -191,6 +193,7 @@ function startClient(node) {
                             if (channel) {
                                 try {
                                     channel.ack(rabbitMsg);
+                                    channel.deleteQueue(replyQueue, {ifEmpty:false});
                                     channel.close();
                                 } catch (e) {
                                     node.error(e);
