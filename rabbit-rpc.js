@@ -190,6 +190,7 @@ function startClient(node) {
                         setTimeout(function () {
                             if (channel) {
                                 try {
+                                    channel.ack(rabbitMsg);
                                     channel.close();
                                 } catch (e) {
                                     node.error(e);
